@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+</head>
+<body>
+    <section>
+        <div id="list-ul-container">
+            <h1>This event bubble</h1>
+            <ul id="u-list">
+                <li class="item">lorem-1</li>
+                <li id="2nd-item" class="item">lorem-2</li>
+                <li class="item">lorem-3</li>
+                <li class="item">lorem-4</li>
+                <li class="item">lorem-5</li>
+            </ul>
+        </div>
+    </section>
+    <script>
+        // li 
+        document.getElementById('2nd-item').addEventListener('click', function(event){
+            console.log('second-1-item-clicked');
+            event.stopImmediatePropagation();
+            
+        });
+        document.getElementById('2nd-item').addEventListener('click', function(event){
+            console.log('second-2-item-clicked');
+            event.stopPropagation();
+            
+        });
+        document.getElementById('2nd-item').addEventListener('click', function(event){
+            console.log('second-3-item-clicked');
+            event.stopPropagation();
+            
+        });
+        // ul 
+        document.getElementById('u-list').addEventListener('click', function(){
+            // const items = document.getElementsByClassName('item');
+            // for(const item of items){
+            //     item.removeChild(item);
+            // }
+            console.log('u-list-clicked');
+        });
+        // ul parent 
+        document.getElementById('list-ul-container').addEventListener('click', function(){
+            console.log('list-ul-container-clicked');
+        });
+    </script>
+</body>
+</html>

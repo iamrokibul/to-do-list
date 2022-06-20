@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Events</title>
+</head>
+<body>
+    <div id="container">
+        <h2>Your deleted text will go here</h2>
+        <p id="delete-text">Lorem ipsum dolor sit amet.</p>
+        <input type="text" id="delete-input">
+        <button id="delete-btn" disabled>Delete</button>
+    </div>
+
+    <script>
+        // Delete the above text 
+        // document.getElementById('delete-btn').addEventListener('click', function(){
+        //     const deleteText = document.getElementById('delete-text');
+        //     deleteText.style.display = 'none';
+        // });
+        // Focus
+        // document.getElementById('delete-input').addEventListener('focus', function(){
+        //     document.body.style.backgroundColor = 'lightcoral';
+        // });
+        // Blur
+        // document.getElementById('delete-input').addEventListener('blur', function(){
+        //     document.body.style.backgroundColor = 'white';
+        // });
+        // Keydown
+        // document.getElementById('delete-input').addEventListener('keydown', function(){
+        //     const deleteField = document.getElementById('delete-input');
+        //     console.log(deleteField.value);
+        // });
+        // Keypress
+        // document.getElementById('delete-input').addEventListener('keypress', function(){
+        //     const deleteField = document.getElementById('delete-input');
+        //     console.log(deleteField.value);
+        // });
+        // Keyup
+        // document.getElementById('delete-input').addEventListener('keyup', function(event){
+        //     // const deleteField = document.getElementById('delete-input');
+        //     // console.log(deleteField.value);
+        //     const deleteButton = document.getElementById('delete-btn');
+        //     if(event.target.value == 'delete'){
+        //         deleteButton.removeAttribute('disabled');
+        //     }else{
+        //         deleteButton.setAttribute('disabled', true);
+        //     }
+        // });
+        // Keychange
+        // document.getElementById('delete-input').addEventListener('change', function(){
+        //     const deleteField = document.getElementById('delete-input');
+        //     console.log(deleteField.value);
+        // });
+    </script>
+    <script>
+        // Text remove 
+        document.getElementById('delete-btn').addEventListener('click', function(){
+            const deleteText = document.getElementById('delete-text');
+            deleteText.style.display = 'none';
+            const deleteInputText = document.getElementById('delete-input');
+            deleteInputText.value = '';
+        });
+
+        // Condition for delete button press 
+        document.getElementById('delete-input').addEventListener('keyup', function(event){
+            const deleteBtn = document.getElementById('delete-btn');
+            if(event.target.value == 'delete'){
+                deleteBtn.removeAttribute('disabled');
+            }else{
+                deleteBtn.setAttribute('disabled', true);
+            }
+        });
+        // On change input value 
+        document.getElementById('delete-input').addEventListener('change', function(){
+            deleteBtn = document.getElementById('delete-btn');
+            if(event.target.value == 'delete'){
+                deleteBtn.removeAttribute('disabled');
+            }else{
+                deleteBtn.setAttribute('disabled', true);
+            }
+        });
+    </script>
+</body>
+</html>

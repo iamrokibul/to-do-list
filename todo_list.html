@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <style>
+        body{font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+        header{
+            width: 100%;
+            padding: 50px 0 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        section{
+            display: flex;
+        }
+        .incomplete_task, .complete_task{
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 30px 0;
+        }
+        ul{
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ToDo List</h1>
+        <input id="new_task" type="text">
+        <input id="add_task_btn" type="submit" value="Add Task">
+    </header>
+    <section>
+        <div class="incomplete_task">
+            <h3>Incomplete Task</h3>
+            <ul id="items_incomplete"></ul>
+        </div>
+        <div class="complete_task">
+            <h3>Complete Task</h3>
+            <ul id="items_complete"></ul>
+        </div>
+    </section>
+    <script>
+        // Get all element first
+        const newTask = document.getElementById("new_task");
+        const addButton = document.getElementById("add_task_btn");
+        const itemsIncomplete = document.getElementById("items_incomplete");
+        const itemsComplete = document.getElementById("items_complete");
+
+        addButton.addEventListener("click", function(){
+            const li = document.createElement("li");
+            li.id = 'complete_item';
+            const newInput = document.createElement("input");
+            newInput.type = "checkbox";
+            newInput.id = "check";
+            const newLabel = document.createElement("label");
+            newLabel.innerText = newTask.value;
+            newTask.value = '';
+            newLabel.htmlFor = "check";
+            
+            itemsIncomplete.appendChild(li);
+            li.appendChild(newInput);
+            li.appendChild(newLabel);
+
+        });
+
+        itemsIncomplete.addEventListener("click", function(){
+            const completeTask = document.getElementById('complete_item');
+            itemsComplete.appendChild(completeTask);
+        });
+
+
+    </script>
+</body>
+</html>
